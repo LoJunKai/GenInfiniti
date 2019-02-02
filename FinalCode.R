@@ -65,12 +65,6 @@ cookdst = cooks.distance(mod) # 154 is NA, idk why
 cookdst[cookdst>4*mean(cookdst, na.rm=T)] #norm is 4*mean
 w = na.omit(w[!cookdst>4*mean(cookdst, na.rm=T),])
 
-normalize <- function(x) {
-    return ((x - min(x)) / (max(x) - min(x)))
-  }
-
-w = data.frame(lapply(w, normalize))
-
 # Import sgboost
 library(xgboost)
 w=data.matrix(w)
